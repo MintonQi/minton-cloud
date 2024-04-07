@@ -10,7 +10,8 @@ import org.springframework.web.client.RestTemplate;
 
 @RestController
 public class OrderController {
-    public static final String url = "http://localhost:8001";
+//    public static final String url = "http://localhost:8001";
+    public static final String url = "http://cloud-payment-service";
 
     @Resource
     private RestTemplate restTemplate;
@@ -19,9 +20,8 @@ public class OrderController {
     public ResultData addOrder(PayDTO payDTO){
         return restTemplate.postForObject(url + "/pay/add",payDTO,ResultData.class);
     }
-    // 删除+修改操作作为家庭作业，O(∩_∩)O。。。。。。。
     @GetMapping("/consumer/pay/get/{id}")
     public ResultData getPayInfo(@PathVariable("id") Integer id){
-        return restTemplate.getForObject(url + "/pay/get/"+id, ResultData.class, id);
+        return restTemplate.getForObject(url + "/pay/"+id, ResultData.class, id);
     }
 }
