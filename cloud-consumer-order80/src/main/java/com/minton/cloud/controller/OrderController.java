@@ -24,4 +24,8 @@ public class OrderController {
     public ResultData getPayInfo(@PathVariable("id") Integer id){
         return restTemplate.getForObject(url + "/pay/"+id, ResultData.class, id);
     }
+    @GetMapping("/consumer/get/mintonInfo")
+    public ResultData getInfo(){
+        return restTemplate.getForObject(url + "/minton/info", ResultData.class);
+    }
 }
